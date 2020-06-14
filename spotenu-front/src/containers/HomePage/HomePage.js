@@ -1,41 +1,15 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import { Paper, Typography, TextField, Button } from '@material-ui/core'
-
-const PaperMain = styled(Paper)`
-    height: 400px;
-    padding: 10px;
-    max-width: 450px;
-    width: 90vw;
-    margin: 5vw auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
-const LoginWrapper = styled.form`
-    margin-top: 12px;
-    width: 80%;
-    gap: 10px;
-    place-content: center;
-    justify-items: center;
-    display: grid;
-`;
-
-const Img = styled.img`
-    height:70px;
-    width: 180px;
-`
-
-const ImgContainer = styled.div`
-    max-width: 450px;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-`
-
+import { connect } from "react-redux";
+import { push } from 'connected-react-router';
+import { routes } from '../Router';
+import { Typography, TextField, Button } from '@material-ui/core';
+import { PaperMain, LoginWrapper, ImgContainer, Img } from './styles';
 class HomePage extends Component {
+
+    handleClickSignUp = () => {
+        this.props.signup()
+    }
+
     render() {
         return (
             <div>
@@ -67,24 +41,24 @@ class HomePage extends Component {
                         />
                         <Button
                             variant="contained"
-                            color="primary"
+                            color="secondary"
                             style={{ margin: "30px" }}
                             type="submit"
                         >
                             Login
                         </Button>
-                    </LoginWrapper>
-                    <Typography variant="h7" >Não tem uma conta ?
+                        <Typography variant="h7" >Não tem uma conta ?
                         <Button
-                        variant="outlined"
+                        variant="contained"
                         size="small"
-                        color="primary"
-                        style={{ margin: "15px" }}
-                        type="submit"
+                        color="secondary"
+                        style={{ margin: "15px" }}                        
+                        onClick={this.handleClickSignUp}
                         >
                             Cadastre-se
                         </Button>
                     </Typography>
+                    </LoginWrapper>
                 </PaperMain>
             <ImgContainer>                
                 <a href="https://apps.apple.com/br/genre/ios/id36"><Img alt="Diponível na App Store" src={require('../img/applestore.png')} /></a>
@@ -95,4 +69,8 @@ class HomePage extends Component {
     }
 }
 
-export default HomePage;
+const mapDispatchToProps = (dispatch) => ({
+    signup: () => dispatch(push(routes.signup))
+})
+
+export default connect(null, mapDispatchToProps)(HomePage);
