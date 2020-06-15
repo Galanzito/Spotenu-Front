@@ -4,7 +4,6 @@ import { Switch, Route } from "react-router-dom";
 import HomePage from '../HomePage/HomePage';
 import SignUpPage from '../SignUpPage/SignUpPage';
 
-
 export const routes = {
     home: "/",
     signup: "/signup"

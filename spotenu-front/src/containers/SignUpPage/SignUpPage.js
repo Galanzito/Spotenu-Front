@@ -2,14 +2,26 @@ import React, { Component } from 'react';
 import { PaperMain, Input, FormWrapper } from './styles'
 import InputPassword from './InputPassword';
 import { Typography, Button } from '@material-ui/core';
+import SelectUserType from './SelectUserType';
 
 class SignUpPage extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            type: ''
+        }
+    }
+
+    handleType = (type) => {
+        this.setState({type: type});
+    }
 
     render() {
         return (
             <PaperMain>
                 <Typography variant="h4" color="primary" >Crie sua conta</Typography>
                 <FormWrapper>
+                    <SelectUserType type={this.handleType} />
                     <Input
                         onChange={""}
                         id="outlined-baseic"
@@ -49,6 +61,20 @@ class SignUpPage extends Component {
                         }}
                         value={""}
                     />
+                    {this.state.type === 'Banda'?                    
+                     <Input
+                        onChange={""}
+                        id="outlined-baseic"
+                        variant="outlined"
+                        name="descricao"
+                        type="descricao"
+                        label="Descrição da Banda"
+                        required
+                        inputProps={{
+                            title: "Informe uma descrição"
+                        }}
+                        value={""}
+                    /> : <div></div>}
                     <InputPassword />
                     <Button
                         variant="contained"

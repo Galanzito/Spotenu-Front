@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Paper, TextField } from '@material-ui/core'
 
 export const PaperMain = styled(Paper)`
-    height: 400px;
+    height: 550px;
     padding: 10px;
     max-width: 450px;
     width: 90vw;
@@ -19,7 +19,7 @@ export const Input = styled(TextField)`
 export const FormWrapper = styled.form`
     margin-top: 12px;
     width: 80%;
-    gap: 2px;
+    gap: 5px;
     place-content: center;
     justify-items: center;
     display: grid;
