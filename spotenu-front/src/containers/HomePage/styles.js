@@ -1,35 +1,21 @@
 import styled from 'styled-components';
-import { Paper } from '@material-ui/core'
+import Card from '@material-ui/core/Card'
 
-export const PaperMain = styled(Paper)`
-height: 400px;
-padding: 10px;
-max-width: 450px;
-width: 90vw;
-margin: 5vw auto;
-display: flex;
-flex-direction: column;
-align-items: center;
+export const CardWrapper = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 800px;
+    gap:50px;
+
+    div{
+        width: 25vw;
+        margin-top: 10px;
 `;
 
-export const LoginWrapper = styled.form`
-margin-top: 12px;
-width: 80%;
-gap: 10px;
-place-content: center;
-justify-items: center;
-display: grid;
-`;
+export const CardContainer = styled(Card)`
+    img{
+        width:100%;
+        height: 25vh;
+    }
 
-export const Img = styled.img`
-height:70px;
-width: 180px;
-`;
-
-export const ImgContainer = styled.div`
-max-width: 450px;
-margin: auto;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-`;
+`
