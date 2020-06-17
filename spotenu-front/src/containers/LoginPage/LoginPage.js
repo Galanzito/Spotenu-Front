@@ -4,6 +4,7 @@ import { push } from 'connected-react-router';
 import { routes } from '../Router';
 import { Typography, TextField, Button } from '@material-ui/core';
 import { PaperMain, LoginWrapper, ImgContainer, Img } from './styles';
+
 class HomePage extends Component {
 
     handleClickSignUp = () => {
@@ -20,10 +21,10 @@ class HomePage extends Component {
                             onChange={""}
                             name="email"
                             type="email"
-                            label="E-mail"
+                            label="E-mail / Nickname"
                             required
                             inputProps={{
-                                title: "Informe um e-mail válido."
+                                title: "Informe um e-mail ou nickname válido."
                             }}
                             value={""}
                         />
@@ -49,22 +50,22 @@ class HomePage extends Component {
                         </Button>
                         <Typography variant="h7" >Não tem uma conta ?
                         <Button
-                        variant="contained"
-                        size="small"
-                        color="secondary"
-                        style={{ margin: "15px" }}                        
-                        onClick={this.handleClickSignUp}
-                        >
-                            Cadastre-se
+                                variant="contained"
+                                size="small"
+                                color="secondary"
+                                style={{ margin: "15px" }}
+                                onClick={this.handleClickSignUp}
+                            >
+                                Cadastre-se
                         </Button>
-                    </Typography>
+                        </Typography>
                     </LoginWrapper>
                 </PaperMain>
-            <ImgContainer>                
-                <a href="https://apps.apple.com/br/genre/ios/id36"><Img alt="Diponível na App Store" src={require('../img/applestore.png')} /></a>
-                <a href="https://play.google.com/store"><Img alt="Disponível na GooglePlay" src={require('../img/googleplay.png')} /></a>            
-            </ImgContainer>
-        </div>
+                <ImgContainer>
+                    <a href="https://apps.apple.com/br/genre/ios/id36"><Img alt="Diponível na App Store" src={require('../img/applestore.png')} /></a>
+                    <a href="https://play.google.com/store"><Img alt="Disponível na GooglePlay" src={require('../img/googleplay.png')} /></a>
+                </ImgContainer>
+            </div>
         )
     }
 }
