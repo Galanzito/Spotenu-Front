@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function InputPassword() {
+export default function InputPassword(props) {
   const classes = useStyles();
   const [values, setValues] = React.useState({
     password: '',
@@ -34,6 +34,7 @@ export default function InputPassword() {
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
+    props.password(event.target.value)
   };
 
   const handleClickShowPassword = () => {

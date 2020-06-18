@@ -35,9 +35,9 @@ export default function SelectUserType(props) {
           onChange={handleChange}
           className={classes.selectEmpty}
         >
-          <MenuItem value={'Normal'}>Normal</MenuItem>
-          <MenuItem value={'Premium'}>Premium</MenuItem>
-          <MenuItem value={'Banda'}>Banda</MenuItem>          
+          <MenuItem value={'NORMAL'}>Normal</MenuItem>
+          <MenuItem value={'PREMIUM'}>Premium</MenuItem>
+          <MenuItem value={'BAND'}>Banda</MenuItem>          
         </Select>
       </FormControl> 
     </div>
