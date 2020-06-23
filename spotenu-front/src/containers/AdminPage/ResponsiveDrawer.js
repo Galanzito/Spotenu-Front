@@ -5,16 +5,17 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import CheckIcon from '@material-ui/icons/Check';
+import MusicNoteIcon from '@material-ui/icons/MusicNote';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Cards from './Cards'
 
 const drawerWidth = 240;
 
@@ -40,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
-  // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
@@ -66,12 +66,22 @@ function ResponsiveDrawer(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['Explorar', 'Minhas Playlists', 'Recentes', 'Sair'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button key={"Cadastrar Admin"}>
+          <ListItemIcon><LockOpenIcon /></ListItemIcon>
+          <ListItemText primary={"Cadastrar Admin"} />
+        </ListItem>
+        <ListItem button key={"Aprovar Banda"}>
+          <ListItemIcon><CheckIcon /></ListItemIcon>
+          <ListItemText primary={"Aprovar Banda"} />
+        </ListItem>
+        <ListItem button key={"Genêros Musicais"}>
+          <ListItemIcon><MusicNoteIcon /></ListItemIcon>
+          <ListItemText primary={"Genêros Musicais"} />
+        </ListItem>
+        <ListItem button key={"Sair"}>
+          <ListItemIcon><ExitToAppIcon /></ListItemIcon>
+          <ListItemText primary={"Sair"} />
+        </ListItem>
       </List>
       <Divider />
     </div>
@@ -85,12 +95,11 @@ function ResponsiveDrawer(props) {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" noWrap>
-            Bem vindo ao Spotenu
+            Spotenu -  Administrador
           </Typography>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
           <Drawer
             container={container}
@@ -102,7 +111,7 @@ function ResponsiveDrawer(props) {
               paper: classes.drawerPaper,
             }}
             ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
+              keepMounted: true
             }}
           >
             {drawer}
@@ -122,8 +131,7 @@ function ResponsiveDrawer(props) {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-          <Typography variant="h4" style={{ textAlign: "center" }}>Em Alta</Typography>
-          <Cards />
+        <Typography variant="h4" style={{ textAlign: "center" }}>Painel do Administrador</Typography>
       </main>
     </div>
   );
