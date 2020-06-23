@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import {registerNewUser} from '../../actions/user/signup'
-
 import { PaperMain, Input, FormWrapper } from './styles'
-import InputPassword from './InputPassword';
 import { Typography, Button } from '@material-ui/core';
-import SelectUserType from './SelectUserType';
+import {registerNewAdmin} from '../../actions/user/signup'
 
-class SignUpPage extends Component {
+class SignUpPageAdmin extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -15,32 +12,21 @@ class SignUpPage extends Component {
                 name: "",
                 nickname: "",
                 email: "",
-                password: "",
-                description: "",
-                type: ""
+                password: ""
             }            
         }
     }
 
     handleOnSubmit = event =>{
         event.preventDefault();
-        this.props.registerNewUser(this.state.user)
+        this.props.registerNewAdmin(this.state.user)        
     }
 
-    handleType = (type) => {
+    handlePasswordInput = (event) => {
         this.setState({
             user:{
                 ...this.state.user,
-                type
-            }
-        });
-    }
-
-    handlePassword = (password) => {
-        this.setState({
-            user:{
-                ...this.state.user,
-                password
+                password: event.target.value
             }
         });
     }
@@ -71,22 +57,11 @@ class SignUpPage extends Component {
             }
         });
     }
-
-    handleDescriptionInput = (event) => {
-        this.setState({
-            user:{
-                ...this.state.user,
-                description: event.target.value
-            }
-        });
-    }
-
     render() {
         return (
             <PaperMain>
-                <Typography variant="h4" color="primary" >Crie sua conta</Typography>
+                <Typography variant="h4" color="primary" >Novo Administrador</Typography>
                 <FormWrapper onSubmit={this.handleOnSubmit}>
-                    <SelectUserType type={this.handleType} />
                     <Input
                         onChange={this.handleNameInput}
                         id="outlined-baseic"
@@ -126,28 +101,26 @@ class SignUpPage extends Component {
                         }}
                         value={this.state.nickname}
                     />
-                    {this.state.user.type === 'BAND'?                    
-                     <Input
-                        onChange={this.handleDescriptionInput}
+                    <Input
+                        onChange={this.handlePasswordInput}
                         id="outlined-baseic"
                         variant="outlined"
-                        name="descricao"
-                        type="descricao"
-                        label="Descrição da Banda"
+                        name="password"
+                        type="password"
+                        label="Senha"
                         required
                         inputProps={{
-                            title: "Informe uma descrição"
+                            title: "Informe um apelido."
                         }}
-                        value={this.state.description}
-                    /> : <div></div>}
-                    <InputPassword password={this.handlePassword} />
+                        value={this.state.password}
+                    />
                     <Button
                         variant="contained"
                         size="small"
                         color="secondary"
                         style={{ margin: "15px" }}
                         type="submit"
-                        onClick={""}>
+                    >
                         Cadastrar
                     </Button>
                 </FormWrapper>
@@ -157,7 +130,7 @@ class SignUpPage extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    registerNewUser: (user) => dispatch(registerNewUser((user))),
+    registerNewAdmin: (user) => dispatch(registerNewAdmin((user))),
 });
 
-export default connect(null, mapDispatchToProps)(SignUpPage);
+export default connect(null, mapDispatchToProps)(SignUpPageAdmin);

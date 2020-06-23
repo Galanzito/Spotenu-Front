@@ -61,24 +61,40 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  const handleClickAdmin = () => {
+    props.clickMenu('admin')
+  };
+
+  const handleClickBand = () => {
+    props.clickMenu('band')
+  };
+
+  const handleClickGenre = () => {
+    props.clickMenu('genre')
+  };
+
+  const handleClickLogout = () => {
+    props.clickMenu('logout')
+  };
+
   const drawer = (
     <div>
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <ListItem button key={"Cadastrar Admin"}>
+        <ListItem button key={"admin"} onClick={handleClickAdmin}>
           <ListItemIcon><LockOpenIcon /></ListItemIcon>
           <ListItemText primary={"Cadastrar Admin"} />
         </ListItem>
-        <ListItem button key={"Aprovar Banda"}>
+        <ListItem button key={"band"} onClick={handleClickBand}>
           <ListItemIcon><CheckIcon /></ListItemIcon>
           <ListItemText primary={"Aprovar Banda"} />
         </ListItem>
-        <ListItem button key={"Genêros Musicais"}>
+        <ListItem button key={"genre"} onClick={handleClickGenre}>
           <ListItemIcon><MusicNoteIcon /></ListItemIcon>
           <ListItemText primary={"Genêros Musicais"} />
         </ListItem>
-        <ListItem button key={"Sair"}>
+        <ListItem button key={"logout"} onClick={handleClickLogout}>
           <ListItemIcon><ExitToAppIcon /></ListItemIcon>
           <ListItemText primary={"Sair"} />
         </ListItem>

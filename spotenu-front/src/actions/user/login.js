@@ -16,9 +16,12 @@ export const login = user => async(dispatch) => {
             dispatch(alertOpen("Bem-vindo!"))
             dispatch(setUser(response.data));
             const token = response.data.accessToken
-            console.log(response.data)
             window.localStorage.setItem("token", token);
-            dispatch(push(routes.home))
+            if(response.data.type === "ADMIN"){
+                dispatch(push(routes.admin))
+            }else{
+                dispatch(push(routes.home))
+            }
         }
 
     }catch(err){

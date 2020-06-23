@@ -5,6 +5,7 @@ import { alertOpen } from './snackbar';
 
 
 const baseUrl = "https://tjr7h88ihd.execute-api.us-east-1.amazonaws.com/beta1/users/signup";
+const localUrl = 'http://localhost:3003/users/admin';
 
 export const registerNewUser = user => async(dispatch) => {
     try{
@@ -25,6 +26,29 @@ export const registerNewUser = user => async(dispatch) => {
             dispatch(alertOpen("Cadastro realizado com sucesso!!"))
             dispatch(push("/home"))
         }
+    }catch(err){
+        dispatch(alertOpen("Ops Algo deu errado", 'error'))
+        console.error(err.message)
+    }
+}
+
+export const registerNewAdmin = user => async(dispatch) => {
+    try{
+        const newAdmin = {
+            name: user.name,
+            email: user.email,
+            nickname: user.nickname,
+            password: user.password
+        }
+        const token = localStorage.getItem('token');
+        const response = await axios.post(`${localUrl}`, newAdmin,{
+            headers:{
+                Authorization: token
+            }
+        })
+        dispatch(setUser(response.data));
+        dispatch(alertOpen("Administrador Cadastrado com Sucesso!!"))
+
     }catch(err){
         dispatch(alertOpen("Ops Algo deu errado", 'error'))
         console.error(err.message)
