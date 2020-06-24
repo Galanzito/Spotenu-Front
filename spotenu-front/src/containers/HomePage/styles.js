@@ -6,6 +6,7 @@ export const CardWrapper = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     max-width: 800px;
     gap:50px;
+    margin-left: 10vw;
 
     div{
         width: 25vw;

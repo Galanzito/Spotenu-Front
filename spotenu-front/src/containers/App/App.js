@@ -10,6 +10,8 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { routerMiddleware } from "connected-react-router";
 import { generateReducers } from "../reducers";
 import theme from "../style/theme"
+import Snackbar from './snackbar'
+
 
 const generateClassName = createGenerateClassName();
 const jss = create({
@@ -32,6 +34,7 @@ export const App = () => (
   <Provider store={store}>
     <JssProvider jss={jss} generateClassName={generateClassName}>
       <MuiThemeProvider theme={theme}>
+        <Snackbar />
         <CssBaseline />
         <Router history={history} />
       </MuiThemeProvider>
