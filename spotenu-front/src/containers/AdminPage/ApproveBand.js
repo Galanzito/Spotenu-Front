@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchBands, approveBand } from '../../actions/bands/bands'
 import { PaperMainBand, MainWrapper } from './styles'
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 
 class Bands extends Component {
 
@@ -18,7 +18,7 @@ class Bands extends Component {
     render() {
         return (
             <MainWrapper>
-                {this.props.bands.map(band => {
+                {this.props.bands[0] ? this.props.bands.map(band => {
                     if (band.isAproved === 0) {
                         return (
                             <PaperMainBand>
@@ -37,7 +37,7 @@ class Bands extends Component {
                             </PaperMainBand>
                         )
                     }
-                })}
+                }):<Typography variant="h6">Sem Bandas Aguardando Aprovação</Typography>}
             </MainWrapper>
         )
     }

@@ -44,3 +44,15 @@ export const MainWrapper = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin-left: 20vw;
 `;
+
+export const PaperMainGenre = styled(Paper)`
+    height: 500px;
+    padding: 10px;
+    max-width: 450px;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 45vw;
+    margin-top: 5vh;
+`;
