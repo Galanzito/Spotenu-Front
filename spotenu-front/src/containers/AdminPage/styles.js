@@ -25,3 +25,22 @@ export const FormWrapper = styled.form`
     justify-items: center;
     display: grid;
 `;
+
+
+export const PaperMainBand = styled(Paper)`
+    height: 200px;
+    padding: 10px;
+    max-width: 250px;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5vw;
+    margin-top: 5vh;
+`;
+
+export const MainWrapper = styled.div`
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-left: 20vw;
+`;

@@ -21,6 +21,7 @@ export const registerNewUser = user => async(dispatch) => {
         dispatch(setUser(response.data));
         if(user.type === 'BAND'){
             dispatch(alertOpen("Banda Cadastrada com Sucesso!! Aguarde aprovação e faça o login", "warning"))
+            dispatch(push("/"))
         }else{
             window.localStorage.setItem("token", response.data.accessToken);
             dispatch(alertOpen("Cadastro realizado com sucesso!!"))

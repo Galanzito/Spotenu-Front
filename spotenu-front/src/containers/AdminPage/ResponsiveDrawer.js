@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from "react-redux";
+import { logout } from '../../actions/user/login'
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -74,7 +76,7 @@ function ResponsiveDrawer(props) {
   };
 
   const handleClickLogout = () => {
-    props.clickMenu('logout')
+    props.logout()
   };
 
   const drawer = (
@@ -157,4 +159,10 @@ ResponsiveDrawer.propTypes = {
   window: PropTypes.func,
 };
 
-export default ResponsiveDrawer;
+const mapDispatchToProps = (dispatch) => {
+  return{
+    logout: () => dispatch(logout())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ResponsiveDrawer);
