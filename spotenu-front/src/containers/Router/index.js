@@ -5,13 +5,16 @@ import LoginPage from '../LoginPage/index';
 import SignUpPage from '../SignUpPage/index';
 import AdminPage from '../AdminPage';
 import HomePage from '../HomePage';
+import PlaylistPage from '../HomePage/PlaylistPage';
+import AlbumPage from '../HomePage/AlbumPage';
 
 export const routes = {
     login: "/",
     signup: "/signup",
     admin: "/admin",
-    home: "/home"
-
+    home: "/home",
+    playlist: "/playlist",
+    album: "/album"
 }
 
 function Router(props) {
@@ -22,6 +25,8 @@ function Router(props) {
                 <Route exact path={routes.signup} component={SignUpPage} />
                 <Route exact path={routes.admin} component={AdminPage} />
                 <Route exact path={routes.home} component={HomePage} />
+                <Route exact path={routes.playlist} component={PlaylistPage} />
+                <Route exact path={routes.album} component={AlbumPage} />
             </Switch>
         </ConnectedRouter>
     )

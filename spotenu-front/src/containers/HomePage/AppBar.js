@@ -82,7 +82,7 @@ export default function SearchAppBar() {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'buscar' }}
-            />
+            />            
           </div>
         </Toolbar>
       </AppBar>

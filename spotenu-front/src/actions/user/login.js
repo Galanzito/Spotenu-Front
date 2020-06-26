@@ -4,12 +4,11 @@ import { push } from 'connected-react-router';
 import { routes } from '../../containers/Router';
 import { alertOpen } from './snackbar';
 
-// const baseUrl = "https://tjr7h88ihd.execute-api.us-east-1.amazonaws.com/beta1/users";
-const localUrl = "http://localhost:3003/users/login"
+const baseUrl = "https://tjr7h88ihd.execute-api.us-east-1.amazonaws.com/beta1/users";
 
 export const login = user => async(dispatch) => {
     try{
-        const response = await axios.post(/*`${baseUrl}/login`*/ `${localUrl}`, user)
+        const response = await axios.post(`${baseUrl}/login`, user)
         if(response.data.type === "BAND" && response.data.isAproved === false){
             dispatch(alertOpen("Aguarde Aprovação para efetuar o Login", 'error'))
         }else{

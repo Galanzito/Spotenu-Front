@@ -3,9 +3,7 @@ import { push } from 'connected-react-router';
 import { setUser } from './actionCreators'
 import { alertOpen } from './snackbar';
 
-
-const baseUrl = "https://tjr7h88ihd.execute-api.us-east-1.amazonaws.com/beta1/users/signup";
-const localUrl = 'http://localhost:3003/users/admin';
+const baseUrl = "https://tjr7h88ihd.execute-api.us-east-1.amazonaws.com/beta1/users";
 
 export const registerNewUser = user => async(dispatch) => {
     try{
@@ -17,7 +15,7 @@ export const registerNewUser = user => async(dispatch) => {
             description: user.description,
             type: user.type            
         }
-        const response = await axios.post(`${baseUrl}`, newUser);
+        const response = await axios.post(`${baseUrl}/signup`, newUser);
         dispatch(setUser(response.data));
         if(user.type === 'BAND'){
             dispatch(alertOpen("Banda Cadastrada com Sucesso!! Aguarde aprovação e faça o login", "warning"))
@@ -42,7 +40,7 @@ export const registerNewAdmin = user => async(dispatch) => {
             password: user.password
         }
         const token = localStorage.getItem('token');
-        const response = await axios.post(`${localUrl}`, newAdmin,{
+        const response = await axios.post(`${baseUrl}/admin`, newAdmin,{
             headers:{
                 Authorization: token
             }

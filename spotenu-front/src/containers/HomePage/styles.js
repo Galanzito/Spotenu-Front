@@ -18,5 +18,4 @@ export const CardContainer = styled(Card)`
         width:100%;
         height: 25vh;
     }
-
 `

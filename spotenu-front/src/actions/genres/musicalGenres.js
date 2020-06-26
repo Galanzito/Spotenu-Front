@@ -1,14 +1,14 @@
 import axios from 'axios'
 import { alertOpen } from '../user/snackbar';
 
-const baseUrl = 'http://localhost:3003/genres'
+const baseUrl = 'https://tjr7h88ihd.execute-api.us-east-1.amazonaws.com/beta1/genres'
 
 export const fetchGenres = () => async(dispatch) => {
     const token = localStorage.getItem('token');
 
     const response = await axios.get(`${baseUrl}/all`,{
         headers:{
-            authorization: token
+            Authorization: token
         }
     })
     const setGenres = (genres) => ({
@@ -28,7 +28,7 @@ export const newGenre = (name) => async(dispatch) => {
         "name": name
     },{
         headers:{
-            authorization: token
+            Authorization: token
         }
     })
     const setGenreName = (name) => {
