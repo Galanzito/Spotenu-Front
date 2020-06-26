@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { alertOpen } from '../user/snackbar';
 
-const baseUrl = 'http://localhost:3003/users'
+const baseUrl = "https://tjr7h88ihd.execute-api.us-east-1.amazonaws.com/beta1/users";
 
 export const fetchBands = () => async(dispatch) => {
     const token = localStorage.getItem('token');
 
     const response = await axios.get(`${baseUrl}/allBands`,{
         headers:{
-            authorization: token
+            Authorization: token
         }
     })
     const setBands = (bands) => ({
@@ -28,7 +28,7 @@ export const approveBand = (id) => async(dispatch) => {
             "id": id
         }, {
             headers:{
-                authorization: token
+                Authorization: token
             }            
         })
         const setIdBand = (id) => ({
